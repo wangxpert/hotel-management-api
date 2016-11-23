@@ -13,7 +13,12 @@ const BookingModel = new mongoose.Schema({
 
     rooms: [{ 
         roomId: {type: String, required: true} 
-    }]
+    }],
+
+    createdAt: {
+        type: Date,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('booking', BookingSchema);

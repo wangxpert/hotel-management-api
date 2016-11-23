@@ -4,7 +4,9 @@
   "description": "hotel booking api example ",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node App/server.js",
+    "start:watch": "nodemon App/server.js"
   },
   "keywords": [
     "booking",
