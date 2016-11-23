@@ -1,0 +1,21 @@
+{
+  "name": "hotel-booking-api",
+  "version": "0.0.1",
+  "description": "hotel booking api example ",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "booking",
+    "hotel",
+    "api"
+  ],
+  "author": "Hsoumi Amenallah <amenallah.hsoumi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.0"
+  }
+}
