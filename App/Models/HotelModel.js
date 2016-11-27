@@ -1,31 +1,51 @@
 const mongoose = require('mongoose');
+const validate = require('mongoose-validator');
 
 const HotelModel = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        validate: validate({validator: 'isLength', arguments: [3, 50], message: 'Name length must be between 3 and 50'})
     },
 
     city: {
         type: String,
-        required: true
+        required: true,
+        validate: validate({validator: 'isLength', arguments: [2, 50], message: 'City length must be between 2 and 50'})
     },
 
     address: {
         type: String,
-        required: true
+        required: true,
+        validate: validate({validator: 'isLength', arguments: [5, 50], message: 'address length must be between 2 and 50'})
     },
 
     createdAt: {
-        type: Date
+        type: Date,
+        required: true,
+        default: new Date(),
     },
 
     rooms: [
         {            
-            roomNumber: {type: Number, required: true},
-            roomType: {type: String, required: true},
-            price: {type: String, required: true},
-            available: {type: Number, required: true, default: 1}   
+            roomNumber: {
+                type: Number, 
+                required: true,
+                validate: validate({validator: 'isInt', message: 'Room Number must be a number'})
+            },
+
+            price: {
+                type: String, 
+                required: true,
+                validate: validate({validator: 'isNumeric', message: 'Room price must be a number'})
+            },
+
+            available: {
+                type: Number,
+                required: true, 
+                default: Boolean,
+                validate: validate({validator: 'isBoolean', message: 'available is boolean'})
+            }   
         }
     ]
 });

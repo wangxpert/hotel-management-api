@@ -1,4 +1,5 @@
 const HotelManagment = require('./HotelManagement');
+const createError = require('http-errors');
 
 module.exports = function(app) {
 
@@ -6,7 +7,17 @@ module.exports = function(app) {
 
     // handle 404
     app.all('*', (req, res, next) => {
-        res.boom.notFound();
+        return next(createError(404));
+    });
+
+    // handle errors
+    app.use((err, req, res, next) => {        
+        res.status(err.status).send({
+            name: err.name,
+            message: err.message,
+            status: err.status,
+            data: err.data
+        });
     });
 
 };
