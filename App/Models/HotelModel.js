@@ -11,6 +11,11 @@ const HotelModel = new mongoose.Schema({
         required: true
     },
 
+    address: {
+        type: String,
+        required: true
+    },
+
     createdAt: {
         type: Date
     },
