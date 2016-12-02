@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
+
+// adding validation to the schema
 const validate = require('mongoose-validator');
 
+// creating the model schema
 const HotelModel = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
         validate: validate({validator: 'isLength', arguments: [3, 50], message: 'Name length must be between 3 and 50'})
     },
 
@@ -41,13 +45,14 @@ const HotelModel = new mongoose.Schema({
             },
 
             available: {
-                type: Number,
+                type: Boolean,
                 required: true, 
-                default: Boolean,
-                validate: validate({validator: 'isBoolean', message: 'available is boolean'})
+                default: true,
+                validate: validate({validator: 'isBoolean', message: 'available must be a boolean'})
             }   
         }
     ]
 });
 
+// exporting the model
 module.exports = mongoose.model('hotel', HotelModel);

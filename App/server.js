@@ -5,7 +5,7 @@ const config = require('../Config');
 const app = express();
 
 // configure express
-config.express(app); 
+config.express(app, config.app); 
 
 // connect to database
 require('../Lib/db')(config.app.mongo);

@@ -3,6 +3,7 @@ const createError = require('http-errors');
 
 // add a new hotel
 const create = function(req, res, next) {
+    
     const data = req.body;
     
     const newHotel = new Hotel({
