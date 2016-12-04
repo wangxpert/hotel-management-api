@@ -35,6 +35,7 @@ const HotelModel = new mongoose.Schema({
             roomNumber: {
                 type: Number, 
                 required: true,
+                unique: true,
                 validate: validate({validator: 'isInt', message: 'Room Number must be a number'})
             },
 

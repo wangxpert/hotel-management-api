@@ -3,17 +3,17 @@ const createError = require('http-errors');
 
 // add a new hotel to db
 const create = function(req, res, next) {
-    
+
     const data = req.body;
-    
+   
     // create new hotel from data
     const newHotel = new Hotel({
         name: data.name,
-        city: data.city.toLowerCase(),
+        city: data.city ? data.city.toLowerCase() : undefined, // store all cities in lowercase for easier searching
         address: data.address,
         rooms: []
     });
-
+    
     // validate hotel data 
     newHotel.validate((err) => {
         if (err) 
@@ -56,4 +56,5 @@ const find = function(req, res, next) {
 module.exports = {
     create,
     find
+  //  addRooms
 };

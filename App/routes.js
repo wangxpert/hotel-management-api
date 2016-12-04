@@ -11,11 +11,11 @@ module.exports = function(app) {
     });
 
     // handle errors
-    app.use((err, req, res, next) => {        
-        res.status(err.status).send({
+    app.use((err, req, res, next) => {
+        res.status(err.status || 500).send({
             name: err.name,
             message: err.message,
-            status: err.status,
+            status: err.status || 500,
             error: err.error
         });
     });
