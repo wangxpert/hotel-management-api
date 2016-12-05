@@ -2,7 +2,7 @@ const Hotel = require('../Models/HotelModel');
 const createError = require('http-errors');
 
 // add a new hotel to db
-const create = function(req, res, next) {
+const createHotel = (req, res, next) => {
 
     const data = req.body;
    
@@ -32,7 +32,7 @@ const create = function(req, res, next) {
 }
 
 // search for hotels
-const find = function(req, res, next) {
+const findHotels = (req, res, next) => {
     
     // search query
     const query = {
@@ -53,8 +53,17 @@ const find = function(req, res, next) {
 
 };
 
+const deleteHotel = (req, res, next) => {
+    const hotelID = req.params.hotelID || '';
+    
+    Hotel.remove({_id: hotelID}, (err) => {        
+        if (err) return next(createError(500, {error: err}))
+        return res.send({done: true, message: 'hotel deleted'});
+    })
+}
+
 module.exports = {
-    create,
-    find
-  //  addRooms
+    createHotel,
+    findHotels,
+    deleteHotel
 };

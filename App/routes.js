@@ -3,7 +3,7 @@ const createError = require('http-errors');
 
 module.exports = function(app) {
 
-    app.use('/hotel', HotelManagment);   
+    app.use('/hotels', HotelManagment);   
 
     // handle 404
     app.all('*', (req, res, next) => {

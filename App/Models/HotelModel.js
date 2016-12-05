@@ -28,9 +28,9 @@ const HotelModel = new mongoose.Schema({
         type: Date,
         required: true,
         default: new Date(),
-    },
+    }
 
-    rooms: [
+   /* rooms: [
         {            
             roomNumber: {
                 type: Number, 
@@ -52,7 +52,7 @@ const HotelModel = new mongoose.Schema({
                 validate: validate({validator: 'isBoolean', message: 'available must be a boolean'})
             }   
         }
-    ]
+    ]*/
 });
 
 // exporting the model
