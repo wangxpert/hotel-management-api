@@ -24,7 +24,7 @@ const createHotel = (req, res, next) => {
             if (err) 
                 return next(createError(400, {error: err}));
             
-            return res.send({done: true, message: 'hotel added'})
+            return res.status(201).send({done: true, message: 'hotel added'})
         });
 
     });
@@ -58,12 +58,30 @@ const deleteHotel = (req, res, next) => {
     
     Hotel.remove({_id: hotelID}, (err) => {        
         if (err) return next(createError(500, {error: err}))
-        return res.send({done: true, message: 'hotel deleted'});
+        return res.status(204).send({done: true, message: 'hotel deleted'});
     })
+}
+
+const updateHotel = (req, res, next) => {
+    const data = req.body;
+
+    const hotelID = req.params.hotelID || '';
+
+    Hotel.update({_id: hotelID}, {
+        $set: {
+            name: data.name,
+            city: data.city ? data.city.toLowerCase() : undefined,
+            address: data.address
+        }
+    }, (err) => {
+        if (err) return next(createError(500));
+        return res.send({done: true, message: 'hotel updated'});
+    });
 }
 
 module.exports = {
     createHotel,
     findHotels,
-    deleteHotel
+    deleteHotel,
+    updateHotel
 };
