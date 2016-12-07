@@ -14,19 +14,12 @@ const createHotel = (req, res, next) => {
         rooms: []
     });
     
-    // validate hotel data 
-    newHotel.validate((err) => {
+    // insert hotel into db
+    newHotel.save((err) => {
         if (err) 
-            return next(createError(400, {error: err.errors}));
+            return next(createError(400, err));
         
-        // insert hotel into db
-        newHotel.save((err) => {
-            if (err) 
-                return next(createError(400, {error: err}));
-            
-            return res.status(201).send({done: true, message: 'hotel added'})
-        });
-
+        return res.status(201).send({done: true, message: 'hotel added'})
     });
 
 }
@@ -53,6 +46,7 @@ const findHotels = (req, res, next) => {
 
 };
 
+// update single hotel
 const deleteHotel = (req, res, next) => {
     const hotelID = req.params.hotelID || '';
     
@@ -62,19 +56,21 @@ const deleteHotel = (req, res, next) => {
     })
 }
 
+// update hotel information
 const updateHotel = (req, res, next) => {
     const data = req.body;
 
     const hotelID = req.params.hotelID || '';
 
+    // validate and update document
     Hotel.update({_id: hotelID}, {
         $set: {
             name: data.name,
             city: data.city ? data.city.toLowerCase() : undefined,
             address: data.address
         }
-    }, (err) => {
-        if (err) return next(createError(500));
+    }, {runValidators: true}, (err) => {
+        if (err) return next(createError(400, err));
         return res.send({done: true, message: 'hotel updated'});
     });
 }

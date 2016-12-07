@@ -16,7 +16,7 @@ module.exports = function(app) {
             name: err.name,
             message: err.message,
             status: err.status || 500,
-            error: err.error
+            error: err
         });
     });
 
