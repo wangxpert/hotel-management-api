@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "start": "node App/server.js",
-    "start:watch": "set DEBUG=app:* && nodemon App/server.js"
+    "start:watch": "nodemon App/server.js"
   },
   "keywords": [
     "booking",
@@ -17,9 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "debug": "^2.3.3",
     "express": "^4.14.0",
-    "express-boom": "^1.0.0",
     "http-errors": "^1.5.1",
     "mongoose": "^4.7.0",
     "mongoose-validator": "^1.2.5",

@@ -1,11 +1,11 @@
-const HotelManagment = require('express').Router();
+const HotelManagmentRouter = require('express').Router();
 const management = require('./management');
 
-HotelManagment.get('/', management.findHotels);
-HotelManagment.post('/', management.createHotel);
+HotelManagmentRouter.get('/', management.findHotels);
+HotelManagmentRouter.post('/', management.createHotel);
 
-HotelManagment.delete('/:hotelID', management.deleteHotel);
-HotelManagment.put('/:hotelID', management.updateHotel);
+HotelManagmentRouter.delete('/:hotelID', management.deleteHotel);
+HotelManagmentRouter.put('/:hotelID', management.updateHotel);
 
 
-module.exports = HotelManagment; 
+module.exports = HotelManagmentRouter; 

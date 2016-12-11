@@ -29,30 +29,6 @@ const HotelModel = new mongoose.Schema({
         required: true,
         default: new Date(),
     }
-
-   /* rooms: [
-        {            
-            roomNumber: {
-                type: Number, 
-                required: true,
-                unique: true,
-                validate: validate({validator: 'isInt', message: 'Room Number must be a number'})
-            },
-
-            price: {
-                type: String, 
-                required: true,
-                validate: validate({validator: 'isNumeric', message: 'Room price must be a number'})
-            },
-
-            available: {
-                type: Boolean,
-                required: true, 
-                default: true,
-                validate: validate({validator: 'isBoolean', message: 'available must be a boolean'})
-            }   
-        }
-    ]*/
 });
 
 // exporting the model

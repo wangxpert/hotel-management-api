@@ -9,9 +9,9 @@ const createHotel = (req, res, next) => {
     // create new hotel from data
     const newHotel = new Hotel({
         name: data.name,
-        city: data.city ? data.city.toLowerCase() : undefined, // store all cities in lowercase for easier searching
-        address: data.address,
-        rooms: []
+        // store all cities in lowercase for easier searching
+        city: data.city ? data.city.toLowerCase() : undefined,
+        address: data.address
     });
     
     // insert hotel into db
@@ -51,7 +51,7 @@ const deleteHotel = (req, res, next) => {
     const hotelID = req.params.hotelID || '';
     
     Hotel.remove({_id: hotelID}, (err) => {        
-        if (err) return next(createError(500, {error: err}))
+        if (err) return next(createError(500));
         return res.status(204).send({done: true, message: 'hotel deleted'});
     })
 }

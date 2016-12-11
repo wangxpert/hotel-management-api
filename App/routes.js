@@ -1,9 +1,10 @@
 const HotelManagment = require('./HotelManagement');
+
 const createError = require('http-errors');
 
 module.exports = function(app) {
 
-    app.use('/hotels', HotelManagment);   
+    app.use('/hotels', HotelManagment); 
 
     // handle 404
     app.all('*', (req, res, next) => {

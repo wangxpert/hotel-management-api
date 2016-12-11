@@ -1,5 +1,4 @@
 const express = require('express');
-const debug = require('debug')('app:server');
 const config = require('../Config');
 
 const app = express();
@@ -15,5 +14,5 @@ require('./routes')(app);
 
 // start the server
 app.listen(app.get('port'), () => {
-    debug(`server started on port ${app.get('port')}`);
+    console.log(`server started on port ${app.get('port')}`);
 });

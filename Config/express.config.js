@@ -1,13 +1,14 @@
 // Express Configuration
 const express = require('express');
-const debug = require('debug');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 module.exports = function(app, config) {
     
     
-    app.use(morgan('dev')); // http request logging
+    // http request logging
+    app.use(morgan('dev'));
+     
     app.use(bodyParser.json());
     
     // set the port from config
